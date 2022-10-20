@@ -1,46 +1,51 @@
-import java.util.*;
-public class duplicate {
-    static Scanner input = new Scanner(System.in);
-    public static void main(String[] args) {
-   try
-      {
-        System.out.print("enter the size of the array:- ");
-        int size = input.nextInt();
-        int[] arr = new int[size];
-        SortArr.Dummyarr(arr,input);
-}
-catch(Exception e)
-     {
-   System.out.println("Invalid");
-     }
-    }
-}
+import java.util.Scanner;
+public class duplicate{
 
-class SortArr {
-    public static void Dummyarr(int[] arr, Scanner input) {
-        int i, j;
-        System.out.println("enter the elements in the array:- ");
-        for (i = 0; i < arr.length; i++) {
-            arr[i] = input.nextInt();
+    public static void main(String[] args) {
+   try{
+        int i,j,x=1;
+        Scanner s=new Scanner(System.in);
+        System.out.println("Enter no of elements in array:");
+        int n =s.nextInt();
+        int arr[]=new int[n];
+        for(i=0;i<n;i++)
+        {
+            System.out.print("Enter element "+(i+1)+" =");
+            arr[i]=s.nextInt();
         }
-   
-        for (i = 0; i < arr.length - 1; i++) {
-            for (j = i + 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
-                    int temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
+        for(i=0;i<n;i++)
+        {
+            if(arr[i]==0)
+            {
+                x=0;
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<i;j++)
+            {
+                if(arr[i]==arr[j])
+                {
+                    arr[i]=0;
+                    arr[j]=0;
                 }
             }
         }
-
-        List<Integer> list = new ArrayList<>();
-
-        for(i=0;i<arr.length-1;i++){
-           if(arr[i]!=arr[i+1])
-               list.add(arr[i]);
+        if(x==0)
+        {
+            System.out.print("0");
         }
-        list.add(arr[arr.length-1]);
-        System.out.println(list);
+        for(i=0;i<n;i++)
+        {
+            if(arr[i]!=0)
+            {     
+                System.out.print(" "+arr[i]);
+            }
+        }
+      }
+      catch(Exception e)
+      {
+        System.out.println("Invalid");
+      }
     }
 }
